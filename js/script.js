@@ -9,10 +9,8 @@ const container = document.getElementById("memoria-numeri");
 const tempo = document.getElementById("timer");
 
 // VARIABILI GLOBALI
-let tempoTimer = 2;
-let punteggio = 0;
-let numeroUtente;
-const numeriIndovinati = [];
+let tempoTimer = 30;
+
 
 // parte il timer di 30 secondi
 let timer = setInterval(
@@ -20,10 +18,15 @@ let timer = setInterval(
     function(){
         tempo.innerHTML = tempoTimer;
 
+        let punteggio = 0;
+        let numeroUtente;
+        const numeriIndovinati = [];
+
         if(tempoTimer === 0){
             clearInterval(timer);
 
            for(let i = 0; i < serieNumeri.length; i++){
+            
 
             // compare il prompt
             numeroUtente = parseInt(prompt("Quali erano i numeri?"));
