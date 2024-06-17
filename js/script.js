@@ -5,22 +5,45 @@
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
 // RIFERIMENTI DOM
-const container = document.getElementById("container");
+const container = document.getElementById("memoria-numeri");
+const tempo = document.getElementById("timer");
 
+// VARIABILI GLOBALI
+let tempoTimer = 30;
 
+// parte il timer di 30 secondi
+let timer = setInterval(
+
+    function(){
+        tempo.innerHTML = tempoTimer;
+
+        if(tempoTimer === 0){
+            clearInterval(timer);
+
+        }else{
+            tempoTimer--;
+        }
+
+    }, 1000
+
+);
 
 // creo array con una serie di numeri casuali usando la funzione
 const serieNumeri = randomNumbersArray(11, 0, 5);
 
 
 // mostro i 5 numeri casuali in pagina
-container.innerHTML = serieNumeri;
+container.innerText = serieNumeri;
 
-// parte il timer di 30 secondi
+
 
 
 // i nuemri spariscono
+setTimeout(numeriScompaiono, 31000);
 
+    function numeriScompaiono() {
+        container.innerText = "";
+    }
 
 // compare il prompt
 
