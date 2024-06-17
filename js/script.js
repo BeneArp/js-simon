@@ -9,7 +9,10 @@ const container = document.getElementById("memoria-numeri");
 const tempo = document.getElementById("timer");
 
 // VARIABILI GLOBALI
-let tempoTimer = 30;
+let tempoTimer = 2;
+let punteggio = 0;
+let numeroUtente;
+const numeriIndovinati = [];
 
 // parte il timer di 30 secondi
 let timer = setInterval(
@@ -20,13 +23,31 @@ let timer = setInterval(
         if(tempoTimer === 0){
             clearInterval(timer);
 
+           for(let i = 0; i < serieNumeri.length; i++){
+
+            // compare il prompt
+            numeroUtente = parseInt(prompt("Quali erano i numeri?"));
+
+                // controllo se i numeri inseriti dall'utente corrispodnono
+                if(serieNumeri.includes(numeroUtente)){
+                    numeriIndovinati.push(numeroUtente);
+                    punteggio++;
+                    console.log(punteggio);
+
+                }
+           }
+
+        
+        // mostro il punteggio in base alle risposte corrette
+        console.log(`Hai indovianto i numeri ${numeriIndovinati}, il tuo punteggio è: ${punteggio}`);
+
         }else{
             tempoTimer--;
         }
 
     }, 1000
-
 );
+
 
 // creo array con una serie di numeri casuali usando la funzione
 const serieNumeri = randomNumbersArray(11, 0, 5);
@@ -45,13 +66,9 @@ setTimeout(numeriScompaiono, 31000);
         container.innerText = "";
     }
 
-// compare il prompt
+    
 
 
-// controllo se i numeri inseriti dall'utente corrispodnono
-
-
-// mostro il punteggio in base alle risposte corrette
 
 
 
